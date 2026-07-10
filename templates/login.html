@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="login-box">
+
+
+<h1>
+MikroTik Manager
+</h1>
+
+
+<form method="post" action="/login">
+
+
+<input 
+type="text"
+name="username"
+placeholder="Username">
+
+
+<input 
+type="password"
+name="password"
+placeholder="Password">
+
+
+<button>
+Login
+</button>
+
+
+</form>
+
+
+</div>
+
+
+{% endblock %}

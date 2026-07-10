@@ -1,0 +1,7 @@
+# config.py
+
+APP_NAME = "MikroTik Manager"
+VERSION = "1.0.0"
+
+MIKROTIK_HOST = "192.168.64.37"
+MIKROTIK_PORT = 8728

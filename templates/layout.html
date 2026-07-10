@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+{% block title %}
+MikroTik Manager
+{% endblock %}
+</title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', path='css/style.css') }}">
+
+
+</head>
+
+
+<body class="bg-light">
+
+
+<nav class="navbar navbar-dark bg-dark">
+
+<div class="container">
+
+<a class="navbar-brand" href="/dashboard">
+MikroTik Manager
+</a>
+
+
+<div>
+
+<a class="btn btn-outline-light btn-sm"
+href="/dashboard">
+Dashboard
+</a>
+
+
+<a class="btn btn-outline-light btn-sm"
+href="/interfaces">
+Interfaces
+</a>
+
+
+<a class="btn btn-outline-light btn-sm"
+href="/ip-address">
+IP Address
+</a>
+
+
+<a class="btn btn-outline-light btn-sm"
+href="/hotspot/users">
+Hotspot
+</a>
+
+
+<a class="btn btn-danger btn-sm" href="/logout">
+Logout
+</a>
+
+</div>
+
+</nav>
+
+
+
+<div class="container mt-4">
+
+
+{% block content %}
+
+{% endblock %}
+
+
+</div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h2 class="mb-4">
+Dashboard
+</h2>
+
+
+
+<div class="row">
+
+
+<div class="col-md-4">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h5>
+Router
+</h5>
+
+<p>
+{{ system["board-name"] }}
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h5>
+CPU Load
+</h5>
+
+<h2>
+{{ system["cpu-load"] }}%
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h5>
+Uptime
+</h5>
+
+<h4>
+{{ system.uptime }}
+</h4>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+<br>
+
+
+<div class="row">
+
+
+<div class="col-md-6">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h5>
+Interfaces
+</h5>
+
+
+<h1>
+{{ interfaces|length }}
+</h1>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-6">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+
+<h5>
+IP Addresses
+</h5>
+
+
+<h1>
+{{ addresses|length }}
+</h1>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<hr>
+
+
+<h4>
+System Information
+</h4>
+
+
+<table class="table table-bordered">
+
+
+<tr>
+<td>Version</td>
+<td>{{ system.version }}</td>
+</tr>
+
+
+<tr>
+<td>CPU</td>
+<td>{{ system.cpu }}</td>
+</tr>
+
+
+<tr>
+<td>Memory</td>
+<td>{{ system["free-memory"] }}</td>
+</tr>
+
+
+<tr>
+<td>Architecture</td>
+<td>{{ system["architecture-name"] }}</td>
+</tr>
+
+
+</table>
+
+
+
+{% endblock %}

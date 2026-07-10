@@ -1,0 +1,202 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+IP Addresses
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+
+
+<h2 class="mb-4">
+IP Addresses
+</h2>
+
+
+<div class="card shadow mb-4">
+
+<div class="card-body">
+
+
+<h5>
+Add IP Address
+</h5>
+
+
+<form method="post"
+action="/ip-address/add">
+
+
+<div class="row">
+
+
+<div class="col-md-5">
+
+<input
+class="form-control"
+name="address"
+placeholder="192.168.10.1/24"
+required>
+
+</div>
+
+
+
+<div class="col-md-5">
+
+
+<select
+class="form-select"
+name="interface">
+
+
+{% for interface in interfaces %}
+
+
+<option value="{{ interface.name }}">
+
+{{ interface.name }}
+
+</option>
+
+
+{% endfor %}
+
+
+</select>
+
+
+</div>
+
+
+
+<div class="col-md-2">
+
+
+<button class="btn btn-primary">
+
+Add
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+
+<div class="card shadow">
+
+<div class="card-body">
+
+
+<table class="table table-striped">
+
+
+<thead>
+
+<tr>
+
+<th>Address</th>
+<th>Network</th>
+<th>Interface</th>
+<th>Dynamic</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+
+<tbody>
+
+
+{% for ip in addresses %}
+
+
+<tr>
+
+
+<td>
+{{ ip.address }}
+</td>
+
+
+<td>
+{{ ip.network }}
+</td>
+
+
+<td>
+{{ ip.interface }}
+</td>
+
+
+<td>
+
+{% if ip.dynamic == "true" %}
+
+<span class="badge bg-info">
+Dynamic
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+Static
+</span>
+
+{% endif %}
+
+</td>
+
+
+<td>
+
+<a class="btn btn-danger btn-sm"
+href="/ip-address/delete/{{ ip.id }}"
+onclick="return confirm('Delete this IP?')">
+
+Delete
+
+</a>
+
+</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+</div>
+
+
+
+{% endblock %}

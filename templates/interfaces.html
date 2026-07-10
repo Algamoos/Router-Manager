@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+Interfaces
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h2 class="mb-4">
+Interfaces
+</h2>
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+<table class="table table-striped">
+
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+<th>Status</th>
+<th>Type</th>
+<th>MAC</th>
+<th>Speed</th>
+<th>RX</th>
+<th>TX</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+
+{% for interface in interfaces %}
+
+
+<tr>
+
+<td>
+{{ interface.name }}
+</td>
+
+
+<td>
+
+{% if interface.disabled == "false" %}
+
+<span class="badge bg-success">
+Running
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+Disabled
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+{{ interface.type }}
+</td>
+
+
+<td>
+{{ interface["mac-address"] }}
+</td>
+
+
+<td>
+{{ interface["speed"] }}
+</td>
+
+<td>
+{{ interface["rx-byte"] }}
+</td>
+
+
+<td>
+{{ interface["tx-byte"] }}
+</td>
+
+<!-- -->
+<td>
+
+{% if interface.name != "lo" and interface.disabled == "false" %}
+
+<a class="btn btn-danger btn-sm"
+href="/interfaces/{{ interface.id }}/disable">
+Disable
+</a>
+
+{% elif interface.name == "lo" %}
+
+<!-- <span class="badge bg-info">
+System
+</span> -->
+
+{% else %}
+
+<a class="btn btn-success btn-sm"
+href="/interfaces/{{ interface.id }}/enable">
+Enable
+</a>
+
+{% endif %}
+
+
+</td>
+<!-- -->
+</tr>
+
+
+{% endfor %}
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+{% endblock %}
+
+<script>
+
+setTimeout(
+    function(){
+        location.reload();
+    },
+    5000
+);
+
+</script>
